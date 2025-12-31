@@ -1,4 +1,4 @@
-/* Google Font */
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
 * {
@@ -146,7 +146,7 @@ hr {
   cursor: pointer;
   font-size: 16px;
   display: block;
-  margin: 0 auto 20px auto; /* centers the button horizontally and adds bottom margin */
+  margin: 0 auto 20px auto; 
 }
 
 /* Modal Inputs */

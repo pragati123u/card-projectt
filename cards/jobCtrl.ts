@@ -1,7 +1,7 @@
 angular.module("jobApp", [])
   .controller("jobCtrl", ["$scope", "$window", "$http", function ($scope, $window, $http) {
 
-    // Jobs array (ONLY from DB)
+    // Jobs array from DB
     $scope.jobs = [];
 
     // New job model
@@ -36,16 +36,16 @@ angular.module("jobApp", [])
       $window.alert("You have applied for the role: " + role);
     };
 
-    // 🔹 FETCH JOBS FROM DATABASE (ONCE)
+    //  FETCH JOBS FROM DATABASE 
     $http.get("http://localhost:3000/jobs")
       .then(function (response) {
-        $scope.jobs = response.data; // ✅ overwrite, not concat
+        $scope.jobs = response.data; 
       })
       .catch(function (err) {
         console.error("Error fetching jobs:", err);
       });
 
-    // 🔹 SAVE NEW JOB
+    // SAVE NEW JOB
     $scope.saveJob = function () {
       if (!$scope.newJob.company || !$scope.newJob.role) {
         $window.alert("Please fill at least Company and Role");
