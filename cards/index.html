@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="jobApp">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Job Cards</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body ng-controller="jobCtrl">
+
+  <!-- Add New Card Button on Top -->
+  <button class="add-btn" ng-click="openForm()">Add New Card</button>
+
+  <!-- Card Container -->
+  <div class="card-container">
+    <div class="card" ng-repeat="job in jobs">
+      <div class="top">
+        <div class="logo">{{job.company.charAt(0)}}</div>
+        <div class="save">Save</div>
+      </div>
+      <div class="company">{{job.company}} · 5 days ago</div>
+      <h2 class="role">{{job.role}}</h2>
+      <div class="tags">
+        <span>{{job.type}}</span>
+        <span>{{job.level}}</span>
+      </div>
+      <hr />
+      <div class="bottom">
+        <div>
+          <div class="pay">{{job.pay}}</div>
+          <div class="location">{{job.location}}</div>
+        </div>
+        <button class="apply" ng-click="applyJob(job.role)">Apply Now</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Form -->
+  <div class="modal-overlay" ng-show="showForm">
+    <div class="modal">
+      <h2>Add Job</h2>
+      <input type="text" ng-model="newJob.company" placeholder="Company Name" />
+      <input type="text" ng-model="newJob.role" placeholder="Role" />
+      <input type="text" ng-model="newJob.type" placeholder="Full Time / Part Time" />
+      <input type="text" ng-model="newJob.level" placeholder="Junior / Senior" />
+      <input type="text" ng-model="newJob.pay" placeholder="Pay ($/hr)" />
+      <input type="text" ng-model="newJob.location" placeholder="Location" />
+      <br/>
+      <button class="apply" ng-click="saveJob()">Save</button>
+      <button class="apply" ng-click="closeForm()">Cancel</button>
+    </div>
+  </div>
+
+  <script src="jobCtrl.js"></script>
+</body>
+</html>
